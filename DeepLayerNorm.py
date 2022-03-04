@@ -4,7 +4,7 @@ from typing import Union, List, Tuple
 from torch.nn import LayerNorm as LayerNorm
 
 _shape_t = Union[int, List[int], Size]
-NUBER_LAYER = 1000 # Encoder/Decoder
+NUMBER_LAYER = 1000 # Encoder/Decoder
 
 class DeepNorm(torch.nn.Module):
     def __init__(self, normalized_shape: _shape_t, eps: float = 1e-5, elementwise_affine: bool = True,
@@ -19,7 +19,7 @@ class DeepNorm(torch.nn.Module):
         """
         super(DeepNorm, self).__init__()
 
-        self.alpha = (2 * NUBER_LAYER) ** 0.25
+        self.alpha = (2 * NUMBER_LAYER) ** 0.25
         self.layernorm = LayerNorm(normalized_shape, eps=eps, elementwise_affine=elementwise_affine)
 
 
