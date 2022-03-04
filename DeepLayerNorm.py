@@ -7,15 +7,14 @@ _shape_t = Union[int, List[int], Size]
 NUMBER_LAYER = 1000 # Encoder/Decoder
 
 class DeepNorm(torch.nn.Module):
-    def __init__(self, normalized_shape: _shape_t, eps: float = 1e-5, elementwise_affine: bool = True,
-                 device=None, dtype=None):
+    def __init__(self, normalized_shape: _shape_t, eps: float = 1e-5, elementwise_affine: bool = True):
         """
-            Root Mean Square Layer Normalization
-        :param dim: model size
-        :param p: partial RMSNorm, valid value [0, 1], default -1.0 (disabled)
-        :param eps:  epsilon value, default 1e-8
-        :param bias: whether use bias term for RMSNorm, disabled by
-            default because RMSNorm doesn't enforce re-centering invariance.
+            Deep Layer Normalization
+        :param normalized_shape: input shape from an expected input of size
+        :param eps:  a value added to the denominator for numerical stability, default 1e-8
+        :param elementwise_affine: a boolean value that when set to ``True``, this module
+            has learnable per-element affine parameters initialized to ones (for weights)
+            and zeros (for biases). Default: ``True``.
         """
         super(DeepNorm, self).__init__()
 
